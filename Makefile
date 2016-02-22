@@ -1,5 +1,5 @@
 BIN = electric_bell
-OBJS = main.o
+OBJS = main.o led.o
 MCU_TARGET = attiny13
 
 CC = avr-gcc

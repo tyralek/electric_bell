@@ -1,5 +1,6 @@
 #include <avr/io.h>
 #include <util/delay.h>
+#include "led.h"
 
 // work plan
 // 1. watch-dog
@@ -13,15 +14,9 @@ int main(void)
 {
     const int msDelay = 200;
 
-    // PortB pin4 to output (set bit to 1 using SHL)
-    DDRB = 1<<DDB3;
-
-    // PortB to low
-    PORTB = 0;
-
+    led_init();
     while (1) {
-        // XOR on pin 4
-        PORTB ^= 1<<PB3;
+        led_toogle();
         _delay_ms(msDelay);
     }
 
