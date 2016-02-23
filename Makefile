@@ -3,8 +3,10 @@ OBJS = main.o
 MCU_TARGET = attiny13
 
 CC = avr-gcc
+CXX = ${CC}
 OBJCOPY=avr-objcopy
 CFLAGS= -Wall -Os -DF_CPU=9600000 -mmcu=${MCU_TARGET}
+CXXFLAGS = ${CFLAGS}
 
 .PHONY : install clean
 

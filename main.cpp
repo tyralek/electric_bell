@@ -23,10 +23,6 @@ ISR(PCINT0_vect)
 
 int main(void)
 {
-    uint8_t data = 0;
-
-    // rising edge
-    MCUCR = (1<<ISC01)|(1<<ISC00);
     // pull up
     PORTB |= (1<<IN_BUTTON);
     // enable on PB4
