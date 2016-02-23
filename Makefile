@@ -13,7 +13,7 @@ ${BIN}.hex: ${BIN}.elf
 	avr-size --format=avr --mcu=${MCU_TARGET} $<
 
 ${BIN}.elf: ${OBJS}
-	${CC} -o $@ $^
+	${CC} ${CFLAGS} -o $@ $^
 
 install: ${BIN}.hex
 	avrdude -c usbasp -p t13 -U flash:w:$<:i
