@@ -1,7 +1,6 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
-#include "led.h"
 
 // work plan
 // 1. watch-dog
@@ -17,7 +16,7 @@
 ISR(INT0_vect, ISR_ALIASOF(PCINT0_vect));
 ISR(PCINT0_vect)
 {
-    led_toogle();
+    PINB = 1<<OUT_LED;
     _delay_ms(10);
 }
 
