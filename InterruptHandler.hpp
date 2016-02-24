@@ -1,12 +1,14 @@
 #ifndef INTERRUPTHANDLER_HPP_
 #define INTERRUPTHANDLER_HPP_
-
+#include <avr/interrupt.h>
 
 class InterruptHandler
 {
 public:
-    void init();
     static InterruptHandler& get_instance();
+    void init();
+    void static enable() { sei(); }
+    void static disable() { cli(); }
 
     bool inline get_button_flag() { return _button_flag; }
     void inline set_button_flag(bool flag) { _button_flag = flag; }
