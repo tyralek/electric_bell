@@ -15,32 +15,32 @@ class Gpio
 public:
     struct Port
     {
-        enum
+        enum _Port
         {
             OUT_LED = 1<<PB3,
             IN_BUTTON = 1<<PB4,
         };
     };
-    
-    static inline void as_output(uint8_t pin_mask)
-    {
-        DDRB = pin_mask;
-    }
 
-    static inline void set(uint8_t pin_mask)
+    struct Interrupt
     {
-        PORTB |= pin_mask;
-    }
+        enum _Interrupt
+        {
+            EXTERNAL_INT0   = 1<<INT0,
+            PIN_CHANGE      = 1<<PCIE,
+        };
+    };
 
-    static inline void clear(uint8_t pin_mask)
-    {
-        PORTB &= ~pin_mask;
-    }
+    // set as input with pull up
+    static inline void as_input(Port::_Port port) { DDRB &= ~port; PORTB |= port; }
+    static inline void as_output(Port::_Port port) { DDRB |= port; }
 
-    static inline void toggle(uint8_t pin_mask)
-    {
-        PINB = pin_mask;
-    }
+    static inline void set(Port::_Port port) { PORTB |= port; }
+    static inline void clear(Port::_Port port) { PORTB &= ~port; }
+    static inline void toggle(Port::_Port port) { PINB = port; }
+
+    static inline void interrupt_enable(Interrupt::_Interrupt mask) { GIMSK |= mask; }
+    static inline void pin_change_interrupt_source(Port::_Port port) { PCMSK |= port; }
 };
 
 

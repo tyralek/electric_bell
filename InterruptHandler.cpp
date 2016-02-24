@@ -20,13 +20,6 @@ void InterruptHandler::init()
 {
     interrupt_handler.set_button_flag(false);
     interrupt_handler.set_timer_flag(false);
-
-    // pull up
-    PORTB |= Gpio::Port::IN_BUTTON;
-    // select pin change interrupt
-    PCMSK = Gpio::Port::IN_BUTTON;
-    // enable pin change interrupt
-    GIMSK = 1<<PCIE;
 }
 
 InterruptHandler& InterruptHandler::get_instance()
