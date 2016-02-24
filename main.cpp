@@ -1,6 +1,7 @@
-#include <avr/io.h>
-#include <avr/interrupt.h>
 #include <util/delay.h>
+
+#include "Gpio.hpp"
+#include "InterruptHandler.hpp"
 
 // work plan
 // 1. watch-dog
@@ -10,32 +11,21 @@
 // 4. out put
 // 5. time logic
 
-#define OUT_LED PB3
-#define IN_BUTTON PB4
-
-ISR(INT0_vect, ISR_ALIASOF(PCINT0_vect));
-ISR(PCINT0_vect)
-{
-    PINB = 1<<OUT_LED;
-    _delay_ms(10);
-}
-
 
 int main(void)
 {
-    // pull up
-    PORTB |= (1<<IN_BUTTON);
-    // enable on PB4
-    PCMSK = 1<<IN_BUTTON;
-    // enable pin change interrupt
-    GIMSK = 1<<PCIE;
-    // enable global interrupt
-    sei();
+    InterruptHandler& interrupt_handler = InterruptHandler::get_instance();
+    interrupt_handler.init();
 
-    DDRB = 1<<DDB3;
+    Gpio::as_output(Gpio::Port::OUT_LED);
     while (1)
     {
-        _delay_ms(500);
+        if (interrupt_handler.button_flag)
+        {
+            interrupt_handler.button_flag = false;
+            Gpio::toggle(Gpio::Port::OUT_LED);
+        }
+        _delay_ms(10);
     }
 
     return 0;
