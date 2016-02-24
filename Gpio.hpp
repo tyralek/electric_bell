@@ -22,22 +22,22 @@ public:
         };
     };
     
-    static void as_output(uint8_t pin_mask)
+    static inline void as_output(uint8_t pin_mask)
     {
         DDRB = pin_mask;
     }
 
-    static void set(uint8_t pin_mask)
+    static inline void set(uint8_t pin_mask)
     {
         PORTB |= pin_mask;
     }
 
-    static void clear(uint8_t pin_mask)
+    static inline void clear(uint8_t pin_mask)
     {
         PORTB &= ~pin_mask;
     }
 
-    static void toggle(uint8_t pin_mask)
+    static inline void toggle(uint8_t pin_mask)
     {
         PINB = pin_mask;
     }

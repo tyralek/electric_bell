@@ -14,15 +14,19 @@
 
 int main(void)
 {
+    // set clock prescaler
+    CLKPR = 1<<CLKPCE;
+    CLKPR = 1<<CLKPS0;
+
     InterruptHandler& interrupt_handler = InterruptHandler::get_instance();
     interrupt_handler.init();
 
     Gpio::as_output(Gpio::Port::OUT_LED);
     while (1)
     {
-        if (interrupt_handler.button_flag)
+        if (interrupt_handler.get_button_flag())
         {
-            interrupt_handler.button_flag = false;
+            interrupt_handler.set_button_flag(false);
             Gpio::toggle(Gpio::Port::OUT_LED);
         }
         _delay_ms(10);

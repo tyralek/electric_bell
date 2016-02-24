@@ -9,21 +9,21 @@ static InterruptHandler interrupt_handler;
 ISR(INT0_vect, ISR_ALIASOF(PCINT0_vect));
 ISR(PCINT0_vect)
 {
-    interrupt_handler.button_flag = true;
+    interrupt_handler.set_button_flag(true);
     _delay_ms(10);
 }
 
 ISR(TIM0_COMPB_vect, ISR_ALIASOF(TIM0_COMPA_vect));
 ISR(TIM0_COMPA_vect)
 {
-    interrupt_handler.timer_flag = true;
+    interrupt_handler.set_timer_flag(true);
 //    PINB = 1<<OUT_LED;
 }
 
 void InterruptHandler::init()
 {
-    interrupt_handler.button_flag = false;
-    interrupt_handler.timer_flag = false;
+    interrupt_handler.set_button_flag(false);
+    interrupt_handler.set_timer_flag(false);
 
     // pull up
     PORTB |= Gpio::Port::IN_BUTTON;
