@@ -13,11 +13,11 @@ ISR(PCINT0_vect)
     _delay_ms(10);
 }
 
-ISR(TIM0_COMPB_vect, ISR_ALIASOF(TIM0_COMPA_vect));
-ISR(TIM0_COMPA_vect)
+ISR(TIM0_COMPB_vect, ISR_ALIASOF(TIM0_OVF_vect));
+ISR(TIM0_COMPA_vect, ISR_ALIASOF(TIM0_OVF_vect));
+ISR(TIM0_OVF_vect)
 {
     interrupt_handler.set_timer_flag(true);
-//    PINB = 1<<OUT_LED;
 }
 
 void InterruptHandler::init()
