@@ -2,17 +2,34 @@
 #include "Gpio.hpp"
 
 BellDriver::BellDriver() :
-    _bell_count(0)
+    _bell_count(0),
+    _to_second_counter(TimeCount::TO_SECOND),
+    _second_counter(TimeCount::TO_LONG)
 {}
 
 void
 BellDriver::fire()
 {
-    _bell_count = BellCount::LONG;
+    if (_second_counter >= TimeCount::TO_LONG)
+    {
+        _bell_count = BellCount::LONG;
+    }
+    else if (_second_counter >= TimeCount::TO_SHORT)
+    {
+        _bell_count = BellCount::SHORT;
+    }
+    _second_counter = 0;
 }
 
 void
 BellDriver::update()
+{
+    _update_output();
+    _update_count();
+}
+
+void
+BellDriver::_update_output()
 {
     if (_bell_count > 0)
     {
@@ -22,5 +39,16 @@ BellDriver::update()
     else
     {
         Gpio::clear(Gpio::Port::OUT_LED);
+    }
+}
+
+void
+BellDriver::_update_count()
+{
+    _to_second_counter--;
+    if (_to_second_counter == 0)
+    {
+        _to_second_counter = TimeCount::TO_SECOND;
+        _second_counter++;
     }
 }

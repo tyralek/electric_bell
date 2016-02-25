@@ -14,7 +14,7 @@ int main(void)
 {
     // system clock is set to 9 600 000 Hz
     SystemClock::prescaler_enable();
-    SystemClock::prescaler_select(SystemClock::Prescaler::CLK_DIV_BY_64);
+    SystemClock::prescaler_select(SystemClock::Prescaler::CLK_DIV_BY_1);
 
     Gpio::as_output(Gpio::Port::OUT_LED);
     Gpio::as_input(Gpio::Port::IN_BUTTON);
