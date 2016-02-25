@@ -7,6 +7,14 @@ class SystemClock
 {
 public:
 
+    struct Freq
+    {
+        enum _Freq
+        {
+            RC = 9600000UL,
+        };
+    };
+
     struct Prescaler
     {
         enum _Prescaler

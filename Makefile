@@ -1,5 +1,5 @@
 BIN = electric_bell
-OBJS = main.o InterruptHandler.o
+OBJS = main.o InterruptHandler.o BellDriver.o
 MCU_TARGET = attiny13
 
 CC = avr-gcc
@@ -22,3 +22,5 @@ install: ${BIN}.hex
 
 clean:
 	rm -f ${BIN}.elf ${BIN}.hex ${OBJS}
+
+all: ${BIN}.elf
