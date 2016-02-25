@@ -9,8 +9,8 @@ public:
     {
         enum _BellCount
         {
-            LONG = 10,
-            SHORT = 2,
+            LONG = 200,
+            SHORT = 20,
         };
     };
 
@@ -18,9 +18,9 @@ public:
     {
         enum _TimeCount
         {
-            TO_SECOND = 100,    // Ticks
-            TO_SHORT = 30,      // sec
-            TO_LONG = 10*60,    // sec
+            TO_SECOND = 117,    // Ticks
+            TO_SHORT = 10,      // 10 sec
+            TO_LONG = 10*60,    // 10 min
         };
     };
 

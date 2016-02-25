@@ -13,12 +13,13 @@ BellDriver::fire()
     if (_second_counter >= TimeCount::TO_LONG)
     {
         _bell_count = BellCount::LONG;
+        _second_counter = 0;
     }
     else if (_second_counter >= TimeCount::TO_SHORT)
     {
         _bell_count = BellCount::SHORT;
+        _second_counter = 0;
     }
-    _second_counter = 0;
 }
 
 void
