@@ -1,10 +1,3 @@
-/*
- * GpioPB.h
- *
- *  Created on: 23 lut 2016
- *      Author: tyrala
- */
-
 #ifndef GPIO_HPP_
 #define GPIO_HPP_
 

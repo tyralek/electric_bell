@@ -7,7 +7,6 @@
 
 int main(void)
 {
-    // system clock is set to 9 600 000 Hz / 16
     SystemClock::prescaler_enable();
     SystemClock::prescaler_select(SystemClock::Prescaler::CLK_DIV_BY_1);
 
@@ -16,7 +15,7 @@ int main(void)
     Gpio::pin_change_interrupt_source(Gpio::Port::IN_BUTTON);
     Gpio::interrupt_enable(Gpio::Interrupt::PIN_CHANGE);
 
-    // time = 1/(9600000Hz/1024/80) = 1/117 = 8,5 ms
+    // time = 1/(9600000[Hz]/1024/80) = 1/117[Hz] = 8,5[ms]
     const uint8_t COMPARE_VALUE= 80;
     Timer::set_output_compare_a(COMPARE_VALUE);
     Timer::waveform(Timer::WaveformMode::CLEAR_TIMER_ON_COMPARE_MATCH);
