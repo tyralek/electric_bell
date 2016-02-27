@@ -35,11 +35,11 @@ BellDriver::_update_output()
     if (_bell_count > 0)
     {
         _bell_count--;
-        Gpio::toggle(Gpio::Port::OUT_LED);
+        Gpio::toggle(Gpio::Port::OUT_BELL);
     }
     else
     {
-        Gpio::clear(Gpio::Port::OUT_LED);
+        Gpio::clear(Gpio::Port::OUT_BELL);
     }
 }
 

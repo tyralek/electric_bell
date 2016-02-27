@@ -17,7 +17,7 @@ public:
     {
         enum _Port
         {
-            OUT_LED = 1<<PB3,
+            OUT_BELL = 1<<PB3,
             IN_BUTTON = 1<<PB4,
         };
     };

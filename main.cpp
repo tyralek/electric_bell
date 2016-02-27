@@ -5,18 +5,13 @@
 #include "InterruptHandler.hpp"
 #include "BellDriver.hpp"
 
-// work plan
-// 1. watch-dog
-// 5. time logic
-
-
 int main(void)
 {
     // system clock is set to 9 600 000 Hz / 16
     SystemClock::prescaler_enable();
     SystemClock::prescaler_select(SystemClock::Prescaler::CLK_DIV_BY_1);
 
-    Gpio::as_output(Gpio::Port::OUT_LED);
+    Gpio::as_output(Gpio::Port::OUT_BELL);
     Gpio::as_input(Gpio::Port::IN_BUTTON);
     Gpio::pin_change_interrupt_source(Gpio::Port::IN_BUTTON);
     Gpio::interrupt_enable(Gpio::Interrupt::PIN_CHANGE);
