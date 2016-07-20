@@ -1,0 +1,21 @@
+# USBasp programmer
+ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="05dc", ATTRS{product}=="USBasp", GROUP="usb", MODE="0666"
+
+
+# Atmel devices
+SYSFS{idVendor}=="16c0", MODE="666", GROUP="usb"
+
+# Devices: free (VOTI)
+SYSFS{idVendor}=="16c0", MODE="666", GROUP="usb"
+
+# Microchip devices
+SYSFS{idVendor}=="04d8", MODE="666", GROUP="usb"
+
+# standard converter FTDI
+SYSFS{idVendor}=="0403", MODE="666", GROUP="usb"
+
+# NXP
+SYSFS{idVendor}=="0471", MODE="666", GROUP="usb"
+
+# LPC-Link probe (Code Red?)
+SYSFS{idVendor}=="1FC9", MODE="666", GROUP="usb"
