@@ -3,7 +3,6 @@
 
 BellDriver::BellDriver() :
     _bell_count(0),
-    _to_second_counter(TimeCount::TO_SECOND),
     _second_counter(TimeCount::TO_LONG)
 {}
 
@@ -35,7 +34,7 @@ BellDriver::_update_output()
     if (_bell_count > 0)
     {
         _bell_count--;
-        Gpio::toggle(Gpio::Port::OUT_BELL);
+        Gpio::set(Gpio::Port::OUT_BELL);
     }
     else
     {
@@ -46,10 +45,5 @@ BellDriver::_update_output()
 void
 BellDriver::_update_count()
 {
-    _to_second_counter--;
-    if (_to_second_counter == 0)
-    {
-        _to_second_counter = TimeCount::TO_SECOND;
-        _second_counter++;
-    }
+	_second_counter++;
 }

@@ -46,7 +46,7 @@ public:
 
     static inline void waveform(WaveformMode::_WaveformMode waveform) { TCCR0A = waveform; }
     static inline void clock_source(ClockSource::_ClockSource clock) { TCCR0B = clock; }
-    static inline void interrupt_enable(Interrupt::_Interrupt mask) { TIMSK0 |= mask; }
+    static inline void interrupt_enable(Interrupt::_Interrupt mask) { TIMSK |= mask; }
     static inline void set_output_compare_a(uint8_t value) { OCR0A = value; }
     static inline void set_output_compare_b(uint8_t value) { OCR0B = value; }
 };
